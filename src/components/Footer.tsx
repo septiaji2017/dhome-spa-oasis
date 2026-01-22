@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Instagram, MapPin, Heart } from 'lucide-react';
+import { Instagram, MapPin, Heart, Phone } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import logo from '@/assets/logo.jpeg';
 
@@ -85,6 +85,17 @@ const Footer = () => {
                   <span>Home Service</span>
                 </a>
               </li>
+              <li>
+                <a
+                  href="https://wa.me/6281280911224"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-primary-foreground/70 hover:text-primary-foreground transition-colors duration-300"
+                >
+                  <Phone size={20} />
+                  <span>0812-8091-1224</span>
+                </a>
+              </li>              
             </ul>
           </div>
         </div>

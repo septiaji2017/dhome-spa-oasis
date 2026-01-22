@@ -106,19 +106,19 @@ const CTASection = () => {
               <p className="font-serif text-4xl md:text-5xl font-light text-spa-brown mb-2">
                 7+
               </p>
-              <p className="text-muted-foreground text-sm">Jenis Layanan</p>
+              <p className="text-muted-foreground text-sm">{t('cta.trust1')}</p>
             </div>
             <div className="text-center">
               <p className="font-serif text-4xl md:text-5xl font-light text-spa-brown mb-2">
                 150k
               </p>
-              <p className="text-muted-foreground text-sm">Mulai dari</p>
+              <p className="text-muted-foreground text-sm">{t('cta.trust2')}</p>
             </div>
             <div className="text-center">
               <p className="font-serif text-4xl md:text-5xl font-light text-spa-brown mb-2">
                 ⭐
               </p>
-              <p className="text-muted-foreground text-sm">Home Service</p>
+              <p className="text-muted-foreground text-sm">{t('cta.trust3')}</p>
             </div>
           </motion.div>
         </motion.div>

@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import { Users, Home, Award, Wallet } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import spaAtmosphere from '@/assets/spa-atmosphere.jpg';
-import calmCare from '@/assets/calm-care.jpg';
+import calmCare from '@/assets/hero-massage_copy.jpg';
 
 const features = [
   {

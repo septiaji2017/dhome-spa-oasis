@@ -124,6 +124,9 @@ const translations: Translations = {
   },
   'cta.button': { id: 'Hubungi via Instagram', en: 'Contact via Instagram' },
   'cta.location': { id: 'Lihat Lokasi', en: 'View Location' },
+  'cta.trust1': { id: 'Jenis Layanan', en: 'Services'},
+  'cta.trust2': { id: 'Mulai Dari', en: 'Starts From'},
+  'cta.trust3': { id: 'Layanan ke Rumah', en: 'Home Service'},
 
   // Footer
   'footer.tagline': {

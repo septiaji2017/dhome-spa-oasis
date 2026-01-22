@@ -2,7 +2,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { MapPin, ArrowDown } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import heroImage from '@/assets/hero-massage.jpg';
+import heroImage from '@/assets/hero-massage.png';
 
 const HeroSection = () => {
   const { t } = useLanguage();

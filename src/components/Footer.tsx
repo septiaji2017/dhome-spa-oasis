@@ -9,9 +9,9 @@ const Footer = () => {
   const quickLinks = [
     { href: '#home', label: t('nav.home') },
     { href: '#services', label: t('nav.services') },
-    { href: '#pricing', label: t('nav.pricing') },
+    { href: '#how-it-works', label: t('nav.how-it-works') },
     { href: '#about', label: t('nav.about') },
-    { href: '#contact', label: t('nav.contact') },
+    { href: '#location', label: t('nav.location') },
   ];
 
   return (
@@ -74,7 +74,7 @@ const Footer = () => {
                   className="flex items-center gap-3 text-primary-foreground/70 hover:text-primary-foreground transition-colors duration-300"
                 >
                   <Instagram size={20} />
-                  <span>@dhomespaofficial_</span>
+                  <span>Instagram</span>
                 </a>
               </li>
               <li>
@@ -85,7 +85,7 @@ const Footer = () => {
                   className="flex items-center gap-3 text-primary-foreground/70 hover:text-primary-foreground transition-colors duration-300"
                 >
                   <MapPin size={20} />
-                  <span>Home Service</span>
+                  <span>Location</span>
                 </a>
               </li>
               <li>
@@ -96,7 +96,7 @@ const Footer = () => {
                   className="flex items-center gap-3 text-primary-foreground/70 hover:text-primary-foreground transition-colors duration-300"
                 >
                   <Phone size={20} />
-                  <span>0812-8091-1224</span>
+                  <span>Whatsapp</span>
                 </a>
               </li>              
             </ul>

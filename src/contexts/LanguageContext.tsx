@@ -17,6 +17,30 @@ const translations: Translations = {
   'nav.about': { id: 'Tentang', en: 'About' },
   'nav.contact': { id: 'Kontak', en: 'Contact' },
   'nav.book': { id: 'Booking Sekarang', en: 'Book Now' },
+  'nav.how-it-works': { id: 'Cara Pemesanan', en: 'How to Book'},
+  'nav.location': { id: 'Kunjungi Kami', en: 'Visit Us'},  
+
+  // Location
+  'location.subtitle': { 
+    id: 'KUNJUNGI KAMI', 
+    en: 'VISIT US' 
+  },
+  'location.title': { 
+    id: 'Lokasi Spa', 
+    en: 'Our Location' 
+  },
+  'location.desc': { 
+    id: 'Ingin perawatan langsung di tempat? Silakan datang ke lokasi kami yang nyaman dan tenang.', 
+    en: 'Prefer treatment at our place? Visit our comfortable and serene location.' 
+  },
+  'location.address': { 
+    id: 'Blk. A No.31, Margaasih, Kec. Margaasih, Kabupaten Bandung, Jawa Barat 40215', 
+    en: 'Blk. A No.31, Margaasih, Kec. Margaasih, Kabupaten Bandung, Jawa Barat 40215' 
+  },
+  'location.btn': { 
+    id: 'Buka Google Maps', 
+    en: 'Open Google Maps' 
+  },
 
   // Hero
   'hero.subtitle': { id: 'Spa & Massage Service', en: 'Spa & Massage Service' },
@@ -38,6 +62,27 @@ const translations: Translations = {
     id: 'Kami menyediakan berbagai pilihan perawatan spa dan massage yang dirancang untuk membantu Anda rileks dan menyegarkan tubuh serta pikiran',
     en: 'We offer a variety of spa and massage treatments designed to help you relax and refresh your body and mind'
   },
+
+  // Process / How It Works Section
+  'process.subtitle': { id: 'LANGKAH MUDAH', en: 'EASY STEPS' },
+  'process.title': { id: 'Cara Pemesanan', en: 'How to Book' },
+  'process.desc': { id: 'Nikmati relaksasi tanpa ribet hanya dalam 4 langkah mudah.', en: 'Enjoy hassle-free relaxation in just 4 simple steps.' },
+
+  // Step 1
+  'step.1.title': { id: 'Pilih Layanan', en: 'Choose Service' },
+  'step.1.desc': { id: 'Tentukan perawatan yang tubuh Anda butuhkan dari menu kami.', en: 'Decide which treatment your body needs from our menu.' },
+
+  // Step 2
+  'step.2.title': { id: 'Hubungi Kami', en: 'Contact Us' },
+  'step.2.desc': { id: 'Klik tombol WhatsApp untuk terhubung dengan admin kami.', en: 'Click the WhatsApp button to connect with our admin.' },
+
+  // Step 3
+  'step.3.title': { id: 'Konfirmasi', en: 'Confirmation' },
+  'step.3.desc': { id: 'Tentukan jadwal waktu dan lokasi Anda.', en: 'Set your preferred time schedule and location.' },
+
+  // Step 4
+  'step.4.title': { id: 'Relaksasi', en: 'Relaxation' },
+  'step.4.desc': { id: 'Terapis kami akan datang dan memanjakan Anda.', en: 'Our therapist will arrive and pamper you.' },
 
   // Service Items
   'service.fullbody': { id: 'Full Body Massage', en: 'Full Body Massage' },
@@ -141,8 +186,8 @@ const translations: Translations = {
   'footer.contact': { id: 'Kontak', en: 'Contact' },
   'footer.followUs': { id: 'Ikuti Kami', en: 'Follow Us' },
   'footer.copyright': {
-    id: '© 2024 D\'home Spa & Massage. Hak cipta dilindungi.',
-    en: '© 2024 D\'home Spa & Massage. All rights reserved.'
+    id: '© 2026 D\'home Spa & Massage. Hak cipta dilindungi.',
+    en: '© 2026 D\'home Spa & Massage. All rights reserved.'
   },
 };
 

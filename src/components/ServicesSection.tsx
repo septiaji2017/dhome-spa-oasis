@@ -62,8 +62,10 @@ const ServicesSection = () => {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
+    // BACKGROUND: Light Beige (bg-gradient-warm)
     <section id="services" className="section-padding bg-gradient-warm" ref={ref}>
-      <div className="container mx-auto">
+      <div className="container mx-auto px-4">
+        
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -103,7 +105,7 @@ const ServicesSection = () => {
                 initial={{ opacity: 0, y: 40 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="service-card hover-lift group"
+                className="service-card hover-lift group bg-white/50 backdrop-blur-sm border border-border/50 rounded-2xl p-6"
               >
                 {service.popular && (
                   <div className="absolute top-4 right-4 px-3 py-1 bg-spa-gold/20 text-spa-brown text-xs font-medium rounded-full">
@@ -144,6 +146,7 @@ const ServicesSection = () => {
             );
           })}
         </motion.div>
+
       </div>
     </section>
   );

@@ -40,14 +40,17 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-serif text-lg font-medium mb-6">
-              {t('footer.quickLinks')}
-            </h4>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const element = document.querySelector(link.href);
+                      
+                      element?.scrollIntoView({ behavior: "smooth" });
+                    }}    
                     className="text-primary-foreground/70 hover:text-primary-foreground transition-colors duration-300"
                   >
                     {link.label}

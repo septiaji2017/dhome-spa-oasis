@@ -21,7 +21,7 @@ const HeroSection = () => {
     <section
       ref={containerRef}
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pb-28 pt-6"
     >
       {/* Background Image with Parallax */}
       <motion.div
@@ -180,6 +180,12 @@ const HeroSection = () => {
         <motion.a
           href="#services"
           className="flex flex-col items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+          onClick={(e) => {
+            e.preventDefault();
+            const element = document.querySelector('#services');
+            
+            element?.scrollIntoView({ behavior: "smooth" });
+          }}              
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
         >

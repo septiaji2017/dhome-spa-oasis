@@ -67,6 +67,12 @@ const Navbar = () => {
               <motion.a
                 key={link.href}
                 href={link.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  const element = document.querySelector(link.href);
+                  
+                  element?.scrollIntoView({ behavior: "smooth" });
+                }}                
                 className="relative text-sm font-medium text-foreground/80 hover:text-foreground transition-colors duration-300 group"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -121,7 +127,12 @@ const Navbar = () => {
                 <motion.a
                   key={link.href}
                   href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const element = document.querySelector(link.href);
+                    
+                    element?.scrollIntoView({ behavior: "smooth" });
+                  } }
                   className="text-lg font-medium text-foreground/80 hover:text-foreground py-2 border-b border-border/50"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}

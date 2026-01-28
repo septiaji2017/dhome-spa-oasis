@@ -42,6 +42,12 @@ const Navbar = () => {
           {/* Logo */}
           <motion.a
             href="#home"
+            onClick={(e) => {
+              e.preventDefault();
+              const element = document.querySelector('#home');
+              
+              element?.scrollIntoView({ behavior: "smooth" });
+            }}               
             className="flex items-center gap-3"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}

@@ -160,6 +160,12 @@ const HeroSection = () => {
             </motion.a>
             <motion.a
               href="#services"
+            onClick={(e) => {
+              e.preventDefault();
+              const element = document.querySelector('#services');
+              
+              element?.scrollIntoView({ behavior: "smooth" });
+            }}                 
               className="inline-flex items-center justify-center px-8 py-4 border-2 border-primary/30 text-foreground rounded-full font-medium hover:border-primary/60 hover:bg-primary/5 transition-all duration-300"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}

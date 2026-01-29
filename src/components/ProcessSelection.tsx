@@ -1,26 +1,26 @@
 import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { CalendarCheck, MessageCircle, Sparkles, HandPlatter } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const steps = [
   {
-    icon: HandPlatter, // Icon for choosing service
+    icon: HandPlatter,
     titleKey: 'step.1.title',
     descKey: 'step.1.desc',
   },
   {
-    icon: MessageCircle, // Icon for WhatsApp
+    icon: MessageCircle,
     titleKey: 'step.2.title',
     descKey: 'step.2.desc',
   },
   {
-    icon: CalendarCheck, // Icon for Confirmation
+    icon: CalendarCheck,
     titleKey: 'step.3.title',
     descKey: 'step.3.desc',
   },
   {
-    icon: Sparkles, // Icon for Relax
+    icon: Sparkles,
     titleKey: 'step.4.title',
     descKey: 'step.4.desc',
   },
@@ -29,20 +29,31 @@ const steps = [
 const ProcessSection = () => {
   const { t } = useLanguage();
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  
+  // OPTIMIZATION: Detect Mobile
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
-  const handleWhatsAppClick = () => {
-    const phoneNumber = '6281280911224'; 
-    
-    const message = "Halo, saya ingin reservasi home spa. Bisa info slot yang tersedia?";
-    
-    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    
-    window.open(url, '_blank');
+  // OPTIMIZATION: Reduce margin on mobile to trigger animation sooner
+  const isInView = useInView(ref, { once: true, margin: isMobile ? '-50px' : '-100px' });
+
+  const handleWhatsAppClick = (e: React.MouseEvent) => {
+    // Prevent default if we want to handle via window.open, 
+    // though using href on the <a> tag is usually better for mobile deep linking.
+    // Keeping logic but using it on an anchor tag below is best practice.
   };
 
+  const phoneNumber = '6281280911224'; 
+  const message = "Halo, saya ingin reservasi home spa. Bisa info slot yang tersedia?";
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
   return (
-    <section id="how-it-works" className="section-padding bg-background relative" ref={ref}>
+    <section id="how-it-works" className="section-padding bg-background relative overflow-hidden" ref={ref}>
       <div className="container mx-auto px-4">
         
         {/* Header */}
@@ -67,7 +78,7 @@ const ProcessSection = () => {
         {/* Steps Container */}
         <div className="relative grid grid-cols-1 md:grid-cols-4 gap-8">
           
-          {/* Connecting Line (Desktop Only) */}
+          {/* Connecting Line (Desktop Only - Pure CSS) */}
           <div className="hidden md:block absolute top-12 left-0 w-full h-0.5 bg-border/50 -z-10" />
 
           {steps.map((step, index) => {
@@ -77,17 +88,21 @@ const ProcessSection = () => {
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-                className="relative flex flex-col items-center text-center group"
+                // OPTIMIZATION: Fast transition on mobile, staggered on desktop
+                transition={{ 
+                  duration: 0.5, 
+                  delay: isMobile ? index * 0.1 : index * 0.2 
+                }}
+                className="relative flex flex-col items-center text-center group will-change-transform"
               >
                 {/* Number Badge (Mobile Only) */}
-                <div className="md:hidden absolute -top-3 -left-3 w-8 h-8 bg-spa-brown text-white rounded-full flex items-center justify-center font-serif text-sm">
+                <div className="md:hidden absolute -top-3 -left-3 w-8 h-8 bg-spa-brown text-white rounded-full flex items-center justify-center font-serif text-sm shadow-sm z-20">
                   {index + 1}
                 </div>
 
-                {/* Icon Circle */}
-                <div className="w-24 h-24 rounded-full bg-white border-4 border-white shadow-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 z-10">
-                  <div className="w-20 h-20 rounded-full bg-spa-gold/10 flex items-center justify-center text-spa-brown group-hover:bg-spa-gold group-hover:text-white transition-colors duration-300">
+                {/* Icon Circle - CSS Hover Effects */}
+                <div className="w-24 h-24 rounded-full bg-white border-4 border-white shadow-lg flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110 z-10">
+                  <div className="w-20 h-20 rounded-full bg-spa-gold/10 flex items-center justify-center text-spa-brown transition-colors duration-300 group-hover:bg-spa-gold group-hover:text-white">
                     <Icon size={32} strokeWidth={1.5} />
                   </div>
                 </div>
@@ -105,16 +120,29 @@ const ProcessSection = () => {
           })}
         </div>
         
-        {/* Optional: CTA Button at bottom */}
+        {/* CTA Button */}
         <motion.div 
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
-            transition={{ delay: 1 }}
+            transition={{ delay: isMobile ? 0.3 : 1 }}
             className="text-center mt-16"
         >
-            <button onClick={handleWhatsAppClick} className="bg-spa-brown text-white px-8 py-3 rounded-full hover:bg-spa-gold hover:text-spa-brown transition-all duration-300 font-medium">
+            <a 
+              href={whatsappUrl}
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="
+                inline-block
+                bg-spa-brown text-white 
+                px-8 py-3 rounded-full 
+                font-medium shadow-md
+                transform transition-all duration-300 
+                hover:bg-spa-gold hover:text-spa-brown hover:scale-105 hover:shadow-lg
+                active:scale-95
+              "
+            >
                 Book via WhatsApp Now
-            </button>
+            </a>
         </motion.div>
 
       </div>

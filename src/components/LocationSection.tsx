@@ -1,12 +1,22 @@
 import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { MapPin, Navigation } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const LocationSection = () => {
   const { t } = useLanguage();
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  
+  // OPTIMIZATION: Detect Mobile
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const isInView = useInView(ref, { once: true, margin: isMobile ? '-50px' : '-100px' });
 
   // --- CONFIGURATION ---
   const mapDirectLink = "https://maps.app.goo.gl/EexGPMAG27bGxPBy6?g_st=awb";
@@ -15,7 +25,8 @@ const LocationSection = () => {
   return (
     <section id="location" className="section-padding bg-background relative overflow-hidden" ref={ref}>
     
-      <div className="absolute inset-0 pointer-events-none">
+      {/* OPTIMIZATION: Hide expensive blur animations on mobile */}
+      <div className="hidden md:block absolute inset-0 pointer-events-none">
         <motion.div
           className="absolute top-0 right-0 w-96 h-96 rounded-full bg-spa-gold/5 blur-3xl opacity-60"
           animate={{ scale: [1, 1.2, 1], x: [0, 50, 0] }}
@@ -33,14 +44,14 @@ const LocationSection = () => {
             
             {/* Left Column: Text Info */}
             <motion.div
-                initial={{ opacity: 0, x: -30 }}
+                initial={{ opacity: 0, x: isMobile ? 0 : -30 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 0.6 }}
             >
                 {/* Decorative Pill */}
-            <span className="inline-block text-spa-gold font-medium tracking-[0.3em] uppercase text-sm mb-4">
-              {t('location.subtitle')}
-            </span>
+                <span className="inline-block text-spa-gold font-medium tracking-[0.3em] uppercase text-sm mb-4">
+                  {t('location.subtitle')}
+                </span>
 
                 <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light text-foreground mb-6">
                     {t('location.title')}
@@ -62,25 +73,31 @@ const LocationSection = () => {
                     </div>
                 </div>
 
-                {/* Main CTA Button */}
-                <motion.a 
+                {/* Main CTA Button - CSS Optimized */}
+                <a 
                     href={mapDirectLink} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 bg-spa-brown text-white px-8 py-4 rounded-full hover:bg-spa-gold hover:text-spa-brown transition-all duration-300 font-medium group shadow-lg shadow-spa-brown/20"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
+                    className="
+                      inline-flex items-center gap-3 
+                      bg-spa-brown text-white 
+                      px-8 py-4 rounded-full 
+                      font-medium group shadow-lg shadow-spa-brown/20
+                      transform transition-all duration-300
+                      hover:bg-spa-gold hover:text-spa-brown hover:scale-105
+                      active:scale-95
+                    "
                 >
-                    <Navigation size={20} />
+                    <Navigation size={20} className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                     <span>{t('location.btn')}</span>
-                </motion.a>
+                </a>
             </motion.div>
 
             {/* Right Column: Map Embed */}
             <motion.div
-                initial={{ opacity: 0, x: 30 }}
+                initial={{ opacity: 0, x: isMobile ? 0 : 30 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.8, delay: 0.2 }}
+                transition={{ duration: 0.8, delay: isMobile ? 0.2 : 0.2 }}
                 className="relative h-[400px] lg:h-[500px] w-full rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white bg-white"
             >
                 <iframe 
@@ -92,7 +109,8 @@ const LocationSection = () => {
                     loading="lazy" 
                     referrerPolicy="no-referrer-when-downgrade"
                     title="Spa Location"
-                    className="grayscale hover:grayscale-0 transition-all duration-700"
+                    // On mobile: Full color by default (better UX). On Desktop: Grayscale until hover.
+                    className="md:grayscale md:hover:grayscale-0 transition-all duration-700"
                 />
                 
                 <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur px-4 py-2 rounded-xl text-xs font-medium text-spa-brown shadow-sm pointer-events-none">

@@ -1,5 +1,5 @@
 import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Sparkles, Hand, Heart, Leaf, Sun, Footprints, Star } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -59,7 +59,17 @@ const services = [
 const ServicesSection = () => {
   const { t } = useLanguage();
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  // Detect mobile
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const isInView = useInView(ref, { once: true, margin: '-50px' });
 
   return (
     // BACKGROUND: Light Beige (bg-gradient-warm)
@@ -91,29 +101,43 @@ const ServicesSection = () => {
         </motion.div>
 
         {/* Services Grid */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, staggerChildren: 0.1 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: isMobile ? 20 : 40 }} // Less movement on mobile
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="service-card hover-lift group bg-white/50 backdrop-blur-sm border border-border/50 rounded-2xl p-6"
+                transition={{ 
+                  duration: 0.5, 
+                  // If mobile, fast staggered or none. If desktop, standard stagger
+                  delay: isMobile ? index * 0.05 : index * 0.1,
+                  ease: "easeOut"
+                }}
+                // OPTIMIZATION: 
+                // 1. bg-white/95 on mobile (solid color is faster than blur). 
+                // 2. md:backdrop-blur-sm (blur only on desktop).
+                // 3. will-change-transform (hints browser to use GPU).
+                className="
+                  relative group
+                  bg-white/95 md:bg-white/50 
+                  md:backdrop-blur-sm 
+                  border border-border/50 rounded-2xl p-6
+                  hover:shadow-lg transition-shadow duration-300
+                  will-change-transform
+                "
               >
+                {/* CSS Hover Effect for lift - replaces Motion hover */}
+                <div className="absolute inset-0 rounded-2xl transition-transform duration-300 md:group-hover:-translate-y-1" />
+
                 {service.popular && (
-                  <div className="absolute top-4 right-4 px-3 py-1 bg-spa-gold/20 text-spa-brown text-xs font-medium rounded-full">
+                  <div className="absolute top-4 right-4 px-3 py-1 bg-spa-gold/20 text-spa-brown text-xs font-medium rounded-full z-10">
                     {t('pricing.popular')}
                   </div>
                 )}
                 
-                <div className="flex items-start gap-4 mb-4">
+                <div className="relative z-10 flex items-start gap-4 mb-4">
                   <div className="p-3 rounded-2xl bg-spa-gold/10 text-spa-brown group-hover:bg-spa-gold/20 transition-colors duration-300">
                     <Icon size={28} strokeWidth={1.5} />
                   </div>
@@ -127,7 +151,7 @@ const ServicesSection = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4 mt-6 pt-4 border-t border-border/50">
+                <div className="relative z-10 flex items-center gap-4 mt-6 pt-4 border-t border-border/50">
                   <div className="flex-1 text-center">
                     <p className="text-xs text-muted-foreground mb-1">90 min</p>
                     <p className="font-serif text-xl font-medium text-spa-brown">
@@ -145,7 +169,7 @@ const ServicesSection = () => {
               </motion.div>
             );
           })}
-        </motion.div>
+        </div>
 
       </div>
     </section>

@@ -152,7 +152,7 @@ const Navbar = () => {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3 }}
               >
-                {t('nav.book')}
+                {t('cta.book-now')}
               </motion.a>
             </div>
           </motion.div>

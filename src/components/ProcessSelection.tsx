@@ -30,7 +30,6 @@ const ProcessSection = () => {
   const { t } = useLanguage();
   const ref = useRef(null);
   
-  // OPTIMIZATION: Detect Mobile
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -39,13 +38,9 @@ const ProcessSection = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // OPTIMIZATION: Reduce margin on mobile to trigger animation sooner
   const isInView = useInView(ref, { once: true, margin: isMobile ? '-50px' : '-100px' });
 
   const handleWhatsAppClick = (e: React.MouseEvent) => {
-    // Prevent default if we want to handle via window.open, 
-    // though using href on the <a> tag is usually better for mobile deep linking.
-    // Keeping logic but using it on an anchor tag below is best practice.
   };
 
   const phoneNumber = '6281280911224'; 
@@ -64,10 +59,11 @@ const ProcessSection = () => {
           className="text-center max-w-2xl mx-auto mb-16"
         >
           <span className="inline-block text-spa-gold font-medium tracking-[0.3em] uppercase text-sm mb-4">
-            {t('process.subtitle')}
+                        {t('process.title')}
+ 
           </span>
           <h2 className="font-serif text-3xl md:text-5xl text-foreground mb-6">
-            {t('process.title')}
+           {t('process.subtitle')}
           </h2>
           <div className="decorative-line mb-6" />
           <p className="text-muted-foreground text-lg">
@@ -141,7 +137,7 @@ const ProcessSection = () => {
                 active:scale-95
               "
             >
-                Book via WhatsApp Now
+                {t('cta.book-now')}
             </a>
         </motion.div>
 

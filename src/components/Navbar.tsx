@@ -19,7 +19,6 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { href: '#home', label: t('nav.home') },
     { href: '#services', label: t('nav.services') },
     { href: '#how-it-works', label: t('nav.how-it-works') },
     { href: '#about', label: t('nav.about') },
@@ -44,14 +43,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4 md:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <motion.a
-            href="#home"
-            onClick={(e) => {
-              e.preventDefault();
-              const element = document.querySelector('#home');
-              
-              element?.scrollIntoView({ behavior: "smooth" });
-            }}               
+          <motion.div   
             className="flex items-center gap-3"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
@@ -69,7 +61,7 @@ const Navbar = () => {
                 Spa & Massage
               </p>
             </div>
-          </motion.a>
+          </motion.div>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-8">
@@ -105,7 +97,7 @@ const Navbar = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              {t('nav.book')}
+              {t('cta.book-now')}
             </motion.a>
           </div>
 

@@ -7,7 +7,6 @@ const Footer = () => {
   const { t } = useLanguage();
 
   const quickLinks = [
-    { href: '#home', label: t('nav.home') },
     { href: '#services', label: t('nav.services') },
     { href: '#how-it-works', label: t('nav.how-it-works') },
     { href: '#about', label: t('nav.about') },
@@ -85,7 +84,7 @@ const Footer = () => {
                   className="flex items-center gap-3 text-primary-foreground/70 hover:text-primary-foreground transition-colors duration-300"
                 >
                   <MapPin size={20} />
-                  <span>Location</span>
+                  <span>{t('footer.location')}</span>
                 </a>
               </li>
               <li>

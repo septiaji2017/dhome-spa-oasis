@@ -175,7 +175,7 @@ const HeroSection = () => {
               rel="noopener noreferrer"
               className="group relative inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground rounded-full font-medium overflow-hidden shadow-lg transition-transform active:scale-95 hover:scale-105"
             >
-              <span className="relative z-10 transition-colors duration-300">{t('hero.cta')}</span>
+              <span className="relative z-10 transition-colors duration-300">{t('cta.book-now')}</span>
               {/* CSS-based fill animation */}
               <div className="absolute inset-0 bg-spa-gold translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300 ease-out" />
             </a>
@@ -204,7 +204,7 @@ const HeroSection = () => {
           onClick={handleScrollToService}
           className="flex flex-col items-center gap-2 text-muted-foreground hover:text-foreground transition-colors animate-bounce"
         >
-          <span className="text-xs tracking-widest uppercase">Scroll</span>
+          <span className="text-xs tracking-widest uppercase">{t('hero.scroll')}</span>
           <ArrowDown size={20} />
         </a>
       </motion.div>

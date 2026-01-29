@@ -11,12 +11,14 @@ interface Translations {
 
 const translations: Translations = {
   // Navigation
+  'cta.book-now': { id: 'Booking Sekarang', en: 'Book Now' },
+  'service.time': { id: 'menit', en: 'min' },
+  'footer.location': { id: 'Lokasi', en: 'Location'},
   'nav.home': { id: 'Beranda', en: 'Home' },
-  'nav.services': { id: 'Layanan', en: 'Services' },
+  'nav.services': { id: 'Layanan Kami', en: 'Our Services' },
   'nav.pricing': { id: 'Harga', en: 'Pricing' },
-  'nav.about': { id: 'Tentang', en: 'About' },
+  'nav.about': { id: 'Mengapa Memilih Kami', en: 'Why Choose Us' },
   'nav.contact': { id: 'Kontak', en: 'Contact' },
-  'nav.book': { id: 'Booking Sekarang', en: 'Book Now' },
   'nav.how-it-works': { id: 'Cara Pemesanan', en: 'How to Book'},
   'nav.location': { id: 'Kunjungi Kami', en: 'Visit Us'},  
 
@@ -51,7 +53,7 @@ const translations: Translations = {
     id: 'Nikmati perawatan spa & massage profesional dalam kenyamanan rumah Anda bersama D\'home Spa',
     en: 'Experience professional spa & massage treatments in the comfort of your home with D\'home Spa'
   },
-  'hero.cta': { id: 'Booking Sekarang', en: 'Book Now' },
+  'hero.scroll': {id: 'Gulir', en: 'Scroll'},
   'hero.cta.secondary': { id: 'Lihat Layanan', en: 'View Services' },
   'hero.homeService': { id: 'Layanan ke Rumah', en: 'Home Service' },
 
@@ -64,7 +66,7 @@ const translations: Translations = {
   },
 
   // Process / How It Works Section
-  'process.subtitle': { id: 'LANGKAH MUDAH', en: 'EASY STEPS' },
+  'process.subtitle': { id: 'Langkah Mudah', en: 'Easy Steps' },
   'process.title': { id: 'Cara Pemesanan', en: 'How to Book' },
   'process.desc': { id: 'Nikmati relaksasi tanpa ribet hanya dalam 4 langkah mudah.', en: 'Enjoy hassle-free relaxation in just 4 simple steps.' },
 
@@ -85,37 +87,37 @@ const translations: Translations = {
   'step.4.desc': { id: 'Terapis kami akan datang dan memanjakan Anda.', en: 'Our therapist will arrive and pamper you.' },
 
   // Service Items
-  'service.fullbody': { id: 'Full Body Massage', en: 'Full Body Massage' },
+  'service.fullbody': { id: 'Pijat Seluruh Tubuh', en: 'Full Body Massage' },
   'service.fullbody.desc': {
     id: 'Pijat seluruh tubuh untuk menghilangkan stres dan ketegangan otot',
     en: 'Full body massage to relieve stress and muscle tension'
   },
-  'service.reflexology': { id: 'Massage & Refleksi', en: 'Massage & Reflexology' },
+  'service.reflexology': { id: 'Pijat & Refleksi', en: 'Massage & Reflexology' },
   'service.reflexology.desc': {
     id: 'Kombinasi pijat tubuh dengan refleksi untuk kesehatan optimal',
     en: 'Combination of body massage with reflexology for optimal health'
   },
-  'service.facial': { id: 'Massage & Totok Wajah', en: 'Massage & Facial Treatment' },
+  'service.facial': { id: 'Pijat & Totok Wajah', en: 'Massage & Facial Treatment' },
   'service.facial.desc': {
     id: 'Pijat tubuh dikombinasikan dengan perawatan wajah tradisional',
     en: 'Body massage combined with traditional facial treatment'
   },
-  'service.scrub': { id: 'Massage & Scrub', en: 'Massage & Body Scrub' },
+  'service.scrub': { id: 'Pijat & Lulur Tubuh', en: 'Massage & Body Scrub' },
   'service.scrub.desc': {
     id: 'Pijat dengan eksfoliasi untuk kulit halus dan bersinar',
     en: 'Massage with exfoliation for smooth and glowing skin'
   },
-  'service.kerokan': { id: 'Massage & Kerokan', en: 'Massage & Kerokan' },
+  'service.kerokan': { id: 'Pijat & Kerokan', en: 'Massage & Scraping' },
   'service.kerokan.desc': {
     id: 'Pijat dengan terapi kerokan tradisional Indonesia',
     en: 'Massage with traditional Indonesian scraping therapy'
   },
-  'service.boreh': { id: 'Massage & Boreh', en: 'Massage & Boreh' },
+  'service.boreh': { id: 'Pijat & Boreh', en: 'Massage & Boreh' },
   'service.boreh.desc': {
     id: 'Pijat dengan masker tradisional Bali untuk sirkulasi darah',
     en: 'Massage with traditional Balinese body mask for circulation'
   },
-  'service.footreflexology': { id: 'Massage & Refleksi Kaki', en: 'Massage & Foot Reflexology' },
+  'service.footreflexology': { id: 'Pijat & Refleksi Kaki', en: 'Massage & Foot Reflexology' },
   'service.footreflexology.desc': {
     id: 'Pijat tubuh dengan fokus refleksi pada kaki',
     en: 'Body massage with focus on foot reflexology'

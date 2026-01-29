@@ -153,14 +153,14 @@ const ServicesSection = () => {
 
                 <div className="relative z-10 flex items-center gap-4 mt-6 pt-4 border-t border-border/50">
                   <div className="flex-1 text-center">
-                    <p className="text-xs text-muted-foreground mb-1">90 min</p>
+                    <p className="text-xs text-muted-foreground mb-1">90 {t('service.time')}</p>
                     <p className="font-serif text-xl font-medium text-spa-brown">
                       {service.price90}
                     </p>
                   </div>
                   <div className="w-px h-10 bg-border" />
                   <div className="flex-1 text-center">
-                    <p className="text-xs text-muted-foreground mb-1">120 min</p>
+                    <p className="text-xs text-muted-foreground mb-1">120 {t('service.time')}</p>
                     <p className="font-serif text-xl font-medium text-spa-brown">
                       {service.price120}
                     </p>

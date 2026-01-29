@@ -28,7 +28,7 @@ const translations: Translations = {
     en: 'VISIT US' 
   },
   'location.title': { 
-    id: 'Lokasi Spa', 
+    id: 'Lokasi Kami', 
     en: 'Our Location' 
   },
   'location.desc': { 

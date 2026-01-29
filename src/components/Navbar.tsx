@@ -26,6 +26,10 @@ const Navbar = () => {
     { href: '#location', label: t('nav.location') },
   ];
 
+  const phoneNumber = '6281280911224'; 
+  const message = "Halo, saya ingin reservasi home spa. Bisa info slot yang tersedia?";
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -94,7 +98,7 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center gap-4">
             <LanguageSwitch />
             <motion.a
-              href="https://www.instagram.com/dhomespaofficial_/"
+              href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-2.5 bg-primary text-primary-foreground rounded-full text-sm font-medium hover:bg-primary/90 transition-colors duration-300 shadow-md hover:shadow-lg"
@@ -148,7 +152,7 @@ const Navbar = () => {
                 </motion.a>
               ))}
               <motion.a
-                href="https://www.instagram.com/dhomespaofficial_/"
+                href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-2 px-6 py-3 bg-primary text-primary-foreground rounded-full text-center font-medium"
